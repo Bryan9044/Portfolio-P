@@ -1,5 +1,5 @@
 import { VscPython  } from "react-icons/vsc"
-import { SiReact, SiTypescript, SiNodedotjs, SiPostgresql, SiTailwindcss, SiCplusplus,SiMysql } from "react-icons/si";
+import { SiReact, SiTypescript, SiNodedotjs, SiTailwindcss, SiCplusplus,SiMysql } from "react-icons/si";
 import TechBadge from "./TechBadge";
 import ProjectCard from "./ProjectCard";
 import CourseCard from "./CourseCard";
@@ -16,7 +16,7 @@ import Cisco from '../assets/cisco.png'
 export default function Body () {
     return (
         <div className="flex flex-col mx-auto max-w-3xl gap-4 mt-2">
-            <h2 className="text-lg font-bold text-gray-700">Technologies I use the most</h2>
+            <h2 className="text-lg font-bold text-slate-700 dark:text-slate-100">Technologies I use the most</h2>
             <div className="flex items-center flex-wrap gap-3">  
                 <TechBadge icon={VscPython} label="Python" />
                 <TechBadge icon={SiCplusplus} label="C++" />
@@ -27,15 +27,15 @@ export default function Body () {
                 <TechBadge icon={SiMysql} label="MySQL" />
             </div>
 
-            <h2 className="text-xl font-bold text-gray-700">Experience</h2>
+            <h2 className="text-xl font-bold text-slate-700 dark:text-slate-100">Experience</h2>
 
             <div className="flex flex-col gap-2">
-                <div className="flex justify-between items-center">
-                    <h3 className="text-lg text-gray-600">Qcarne Loyalty & Ticket Management System</h3>
-                    <p className="text-sm bg-blue-200 w-fit rounded-4xl px-3 py-1">13/01/2026 - 16/02/2026</p>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                    <h3 className="text-lg text-slate-600 dark:text-slate-100">Qcarne Loyalty & Ticket Management System</h3>
+                    <p className="text-sm bg-indigo-100 w-fit rounded-4xl px-3 py-1 shrink-0">13/01/2026 - 16/02/2026</p>
                 </div>
-                <h4 className="text-sm text-gray-500">Full-Stack Developer</h4>
-                <ul className="list-disc list-inside text-sm text-gray-500 space-y-1">
+                <h4 className="text-sm text-slate-500 dark:text-slate-100">Full-Stack Developer</h4>
+                <ul className="list-disc list-inside text-sm text-slate-500 space-y-1 dark:text-slate-300">
                     <li>
                         Built the full-stack admin module for a loyalty stamp system, including
                         unique supervisor codes used to validate qualifying purchases and
@@ -53,12 +53,12 @@ export default function Body () {
             </div>
 
             <div className="flex flex-col gap-2">
-                <div className="flex justify-between items-center">
-                    <h3 className="text-lg text-gray-600">Vehicle Repair Shop Management System</h3>
-                    <p className="text-sm bg-blue-200 w-fit rounded-4xl px-3 py-1">10/03/2026 - 12/06/2026</p>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                    <h3 className="text-lg text-slate-700 dark:text-slate-100">Vehicle Repair Shop Management System</h3>
+                    <p className="text-sm bg-indigo-100 w-fit rounded-4xl px-3 py-1 shrink-0">10/03/2026 - 12/06/2026</p>
                 </div>
-                <h4 className="text-sm text-gray-500">Full-Stack Developer</h4>
-                <ul className="list-disc list-inside text-sm text-gray-500 space-y-1">
+                <h4 className="text-sm text-slate-500 dark:text-slate-100">Full-Stack Developer</h4>
+                <ul className="list-disc list-inside text-sm text-slate-500 space-y-1 dark:text-slate-300">
                     <li>
                         Built a full-stack system to manage the repair workflow: vehicle
                         intake with client comments, mechanic diagnosis, and tracking of
@@ -74,7 +74,7 @@ export default function Body () {
                     </li>
                 </ul>
             </div>
-            <h2 className="text-xl font-bold text-gray-700">Projects</h2>
+            <h2 className="text-xl font-bold text-slate-700 dark:text-slate-100">Projects</h2>
             <ProjectCard 
                 title="File manager made with Java" 
                 image={GestorArchivos} 
@@ -142,7 +142,12 @@ export default function Body () {
                 institution="Cisco"
                 image={Cisco}
                 certificateUrl="https://www.credly.com/badges/0d3e02dd-688d-407b-82cb-46ef39516911"                
-            />                             
+            /> 
+            
+            <div className=" border-slate-200 border-t-4 my-2">
+
+            </div>                            
         </div>
+
     )
 }
