@@ -17,11 +17,16 @@ jobs:
         working-directory: ./bryan-portfolio
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run build
+          cache: 'pnpm'
+          cache-dependency-path: ./bryan-portfolio/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./bryan-portfolio/dist
