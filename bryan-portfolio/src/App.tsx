@@ -1,84 +1,44 @@
 import { useEffect, useState } from 'react'
-import { Sun, Moon } from "lucide-react"
+import { Moon, Sun } from 'lucide-react'
 import Header from './components/Header'
 import Body from './components/Body'
 import Footer from './components/Footer'
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(false)
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
+    document.documentElement.classList.toggle('dark', isDark)
   }, [isDark])
 
-    return (
-        <div className={`relative overflow-hidden min-h-screen ${isDark ? "bg-[#100e0b]" : "bg-[#faf8f2]"}`}>
-            {isDark ? (
-                <>
-                    <div 
-                        className="absolute inset-0 pointer-events-none blur-[25px] md:blur-[36px]"
-                        style={{
-                            background: "radial-gradient(85% 55% at 52% 0%, rgba(35,70,105,0.34) 0%, rgba(24,49,74,0.18) 38%, transparent 76%)",
-                            mixBlendMode: "screen"
-                        }}
-                        aria-hidden="true"
-                    />
+  return (
+    <div className="relative isolate min-h-screen overflow-hidden bg-[#f7f8fc] text-slate-800 transition-colors dark:bg-[#0c1220] dark:text-slate-100">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-48 left-1/2 -z-10 h-[34rem] w-[52rem] -translate-x-1/2 rounded-full bg-indigo-200/50 blur-3xl dark:bg-indigo-950/50"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[-12rem] top-[36rem] -z-10 h-80 w-80 rounded-full bg-sky-100/70 blur-3xl dark:bg-sky-950/30"
+      />
 
-                    <div 
-                        className="absolute inset-0 pointer-events-none blur-[25px] md:blur-[36px] opacity-90"
-                        style={{
-                            background: "linear-gradient(180deg, rgba(54,88,120,0.16) 0%, transparent 45%, rgba(0,0,0,0.18) 100%)",
-                            mixBlendMode: "soft-light"
-                        }}
-                        aria-hidden="true"
-                    />
+      <button
+        type="button"
+        onClick={() => setIsDark((current) => !current)}
+        aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
+        aria-pressed={isDark}
+        className="fixed right-4 top-4 z-20 flex min-h-12 min-w-12 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 shadow-lg shadow-slate-900/10 transition hover:-translate-y-0.5 hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800 dark:focus-visible:ring-indigo-700"
+      >
+        {isDark ? <Sun aria-hidden="true" className="h-5 w-5" /> : <Moon aria-hidden="true" className="h-5 w-5" />}
+      </button>
 
-                    <div 
-                        className="absolute inset-0 pointer-events-none blur-[25px] md:blur-[36px]"
-                        style={{
-                            background: "radial-gradient(42% 35% at 78% 16%, rgba(96,130,155,0.16) 0%, transparent 78%)",
-                            mixBlendMode: "screen"
-                        }}
-                        aria-hidden="true"
-                    />
-                </>
-            ) : (
-                <>
-
-                    <div 
-                        className="absolute inset-0 pointer-events-none blur-[90px] md:blur-[130px]"
-                        style={{
-                            background: "linear-gradient(rgba(0,0,0,0) 0%, rgba(200,230,255,0.12) 28%, rgb(255,255,255) 18%, rgb(150,200,255) 68%, rgb(100,130,200) 100%)",
-                            mixBlendMode: "multiply"
-                        }}
-                        aria-hidden="true"
-                    />
-
-                    <div 
-                        className="absolute inset-0 pointer-events-none blur-[90px] md:blur-[130px]"
-                        style={{
-                            background: "linear-gradient(rgba(0,0,0,0) 0%, rgba(200,230,255,0.22) 34%, rgb(255,255,255) 66%, rgb(150,200,255) 82%, rgb(100,130,200) 100%)",
-                            mixBlendMode: "multiply"
-                        }}
-                        aria-hidden="true"
-                    />
-                </>
-            )}
-
-            <div className="relative z-1">
-                <button 
-                    onClick={() => setIsDark(!isDark)}
-                    className="fixed top-4 right-4 z-10 bg-indigo-400 hover:bg-indigo-500 rounded-full w-11 h-11 flex items-center justify-center cursor-pointer"
-                    aria-label="Toggle dark mode"
-                >
-                    {isDark ? <Sun className="w-5 h-5 text-white" /> : <Moon className="w-5 h-5 text-white" />}
-                </button>
-                <Header />
-                <Body />
-                <Footer />
-            </div>
-        </div>
-    );
+      <div className="relative mx-auto flex max-w-5xl flex-col gap-10 px-5 pb-12 pt-20 sm:gap-14 sm:px-8 sm:pt-24">
+        <Header />
+        <Body />
+        <Footer />
+      </div>
+    </div>
+  )
 }
 
 export default App
